@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<h1>Employees List</h1>
+<table id="list">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th> Employee ID</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% employees.forEach(function(e) { %>
+      <tr>
+        <td><%= e.name %></td>
+        <td><%= e.employeeId %></td>
+        <td><a href="/employees/<%= e._id %>">Detail</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+<%- include('../partials/footer') %>

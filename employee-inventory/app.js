@@ -4,26 +4,24 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-require('dotenv').config();
-// connect to the database with AFTER the config consts are processed
-require('./config/database.js');
-
 var indexRouter = require('./routes/index');
-var employeesRouter = require('./routes/employees.js')
+var usersRouter = require('./routes/users');
 
 var app = express();
-app.use(cookieParser());
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/employees', employeesRouter);
+app.use('/users', usersRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -40,7 +38,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3456, function () {
-  console.log('listening on 3456')
-});
 module.exports = app;
