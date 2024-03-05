@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
-const employeeSchema = new Schema({
-     fullName:{
+const employeeSchema = new mongoose.Schema({
+     name:{
         type: String,
         required: true
     },
@@ -10,15 +10,20 @@ const employeeSchema = new Schema({
         type: Number,
         unique: true,
         required: true
-    }
-    // email:{
-    //     type: email,
-    //     required: true
-    // },
-    // contactNumber:{
-    //     type: Number,
-    //     required: true
-    // }
+    },
+    jobTitle:{
+        type: String,
+        enum: ['CEO', 'CTO', 'manager', 'assistant']
+    },
+    email:{
+        type: String,
+        unique: true,
+        required: true
+    },
+    contactNumber:{
+        type: Number,
+        required: true
+    },
 },{
     timestamps: true
 });

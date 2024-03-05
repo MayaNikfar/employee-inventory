@@ -1,13 +1,37 @@
-<%- include('../partials/header') %>
+<%- include('../partials/top') %>
 
-<form action="/employees" method="POST">
-    <label> Full Name:</label>
-    <input type="text" name="name" required>
-
-    <label>Employee ID:</label>
-    <input type="number" name="employeeId">
-
-    <button type="submit">Add Employee</button>
+<form class="form" action="/employees" method="POST">
+  <!-- <div class="mb-3 input-group flex-nowrap">
+    <label>Full Name:</label> 
+    <input type="text" name="name" class="form-control" required>
+  </div> -->
+  <div class="mb-3 input-group">
+    <label class="input-group-text">First and last name</label>
+    <input type="text" aria-label="name" class="form-control" required>
+  </div>
+  <div class="mb-3 input-group">
+    <label class="input-group-text">Employee ID:</label>
+    <input class="form-control" type="number" name="employeeId" required>
+  </div>
+  <div class="input-group mb-3">
+    <label class="input-group-text"> Job Title</label>
+    <select class="form-control" name="JobTitle">
+        <option value=""></option>
+        <option value="CEO">CEO</option>
+        <option value="CTO">CTO</option>
+        <option value="manager">Manager</option>
+        <option value="assistant">Assistant</option>
+      </select>
+  </div>
+  <div class="mb-3 input-group">
+    <label class="input-group-text">Email:</label> 
+    <input class="form-control" type="email" name="email" placeholder="@gmail.com" required>
+  </div>
+  <div class="mb-3 input-group"></div>
+    <label class="input-group-text">Contact Number:</label> 
+    <input class="form-control" type="number" name="contactNumber" required>
+</div>  <br> <br>
+<button type="submit" class="btn btn-outline">Add Employee</button>
 </form>
 
-<%- include('../partials/footer') %>
+<%- include('../partials/bottom') %>

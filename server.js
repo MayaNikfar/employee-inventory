@@ -1,21 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 require('dotenv').config();
 // connect to the database with AFTER the config consts are processed
 require('./config/database.js');
 
-var indexRouter = require('./routes/index');
-var employeesRouter = require('./routes/employees.js')
+const indexRouter = require('./routes/index');
+const employeesRouter = require('./routes/employees')
 
-var app = express();
-app.use(cookieParser());
+const app = express();
+// app.use(cookieParser());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -26,7 +26,7 @@ app.use('/', indexRouter);
 app.use('/employees', employeesRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  next();
 });
 
 // error handler

@@ -1,0 +1,19 @@
+<%- include('../partials/top') %>
+
+<form action="/employees/<%= employee._id %>/" method="POST" id="show-page">
+<section>
+    <div>Full Name:</div>
+    <div><%= employee.name %></div>
+    <div>Employee ID:</div>
+    <div><%= employee.employeeId %></div>
+    <div>Job Title:</div>
+    <div><%= employee.jobTitle %></div>
+    <div>Email:</div>
+    <div><%= employee.email %></div>
+    <div>contact Number:</div>
+    <div><%= employee.contactNumber %></div>
+</section>
+</form>
+
+<%- include('../partials/bottom') %>
+
