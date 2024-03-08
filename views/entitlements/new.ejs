@@ -1,0 +1,19 @@
+<%- include('../partials/top') %>
+<div class="shadow position-relative py-2 border border-secondary rounded-pill">
+  Before adding, please ensure that the Entitlement is not in the following list<svg width="1em" height="1em" viewBox="0 0 16 16" class="position-absolute top-100 start-50 translate-middle mt-1" fill="var(--bs-secondary)" xmlns="http://www.w3.org/2000/svg"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+</div>
+
+<section id="badge-container">
+  <% entitlements.forEach(function(e) { %>
+    <article class="badge"><%= e.name %></article>
+  <% }) %>
+</section>
+
+<form id="add-entitlement-form" action="/entitlements" method="POST">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" name="name" placeholder="Add Entitlements" aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
+  </div>
+</form>
+
+<%- include('../partials/bottom') %>

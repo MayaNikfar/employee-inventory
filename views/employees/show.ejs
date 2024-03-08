@@ -1,19 +1,35 @@
 <%- include('../partials/top') %>
+<section class="form">
+    <div class="label">Full Name:</div>
+    <div class="input "><%= employee.name %></div> <br> <br>
+    <div class=" label">Employee ID:</div>
+    <div class=" input"><%= employee.employeeId %></div> <br><br>
+    <div class=" label">Job Title:</div>
+    <div class=" input"><%= employee.jobTitle %></div><br><br>
+    <div class="label ">Email:</div> 
+    <div class=" input"><%= employee.email %></div><br><br>
+    <div class="label ">contact Number:</div>
+    <div class="input "><%= employee.contactNumber %></div><br><br>
 
-<form action="/employees/<%= employee._id %>/" method="POST" id="show-page">
-<section>
-    <div>Full Name:</div>
-    <div><%= employee.name %></div>
-    <div>Employee ID:</div>
-    <div><%= employee.employeeId %></div>
-    <div>Job Title:</div>
-    <div><%= employee.jobTitle %></div>
-    <div>Email:</div>
-    <div><%= employee.email %></div>
-    <div>contact Number:</div>
-    <div><%= employee.contactNumber %></div>
+     <!-- start 'select Entitlement' list -->
+  <div class="ent">Entitlement:</div>
+  <ul>
+    <%- employee.selectEnts.map(p => 
+      `<p>${p.name}</p>`
+    ).join('') %>
+  </ul>
+  <!-- end 'select Entitlement' list -->
 </section>
-</form>
+<!-- add to selectEnt form below this comment -->
+<form id="add-per-to-selectEnt" action="/employees/<%= employee._id %>/entitlements" method="POST">
+    <select class="select" name="entitlementId">
+      <!-- Emit an option for each performer -->
+      <%- entitlements.map(p => 
+        `<option value="${p._id}">${p.name}</option>`
+      ).join('') %>
+    </select>
+    <button type="submit" class="btn btn-outline-success">Select</button>
+  </form>
 
 <%- include('../partials/bottom') %>
 

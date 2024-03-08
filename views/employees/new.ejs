@@ -7,7 +7,7 @@
   </div> -->
   <div class="mb-3 input-group">
     <label class="input-group-text">First and last name</label>
-    <input type="text" aria-label="name" class="form-control" required>
+    <input type="text" name="name" class="form-control" required>
   </div>
   <div class="mb-3 input-group">
     <label class="input-group-text">Employee ID:</label>
@@ -27,11 +27,12 @@
     <label class="input-group-text">Email:</label> 
     <input class="form-control" type="email" name="email" placeholder="@gmail.com" required>
   </div>
-  <div class="mb-3 input-group"></div>
-    <label class="input-group-text">Contact Number:</label> 
-    <input class="form-control" type="number" name="contactNumber" required>
+  <div class="input-group"></div>
+    <label class=" number input-group-text">Contact Number:</label> 
+    <input class=" number form-control" type="number" name="contactNumber" required>
+  
 </div>  <br> <br>
-<button type="submit" class="btn btn-outline">Add Employee</button>
+<button type="submit" class="btn btn-outline-success">Add Employee</button>
 </form>
 
 <%- include('../partials/bottom') %>

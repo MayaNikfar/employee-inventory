@@ -1,5 +1,5 @@
 const Employee = require('../models/employee');
-
+const Entitlement = require('../models/entitlement');
 module.exports = {
     index,
     show,
@@ -11,9 +11,14 @@ async function index(req, res){
     res.render('employees/index', {title: 'All Employees', employees });
 }
 async function show(req,res){
-  const employee = await Employee.findById(req.params.id);
-  res.render('employees/show', {title: 'Employee Detail', employee });
+  const employee = await Employee.findById(req.params.id).populate('selectEnts');
+  const entitlements = await Entitlement.find({ _id: { $nin: employee.selectEnts} }).sort('name');
+  res.render('employees/show', {title: 'Employee Detail', employee, entitlements });
 }
+
+
+
+
 function newEmployee(req,res) {
     res.render('employees/new', {title: 'Add Employee', errorMsg:''});
 }
@@ -24,6 +29,7 @@ async function create(req, res) {
     }
     try {
       console.log(req.body);
+      req.body.user = req.user._id
       await Employee.create(req.body);
       // Always redirect after CUDing data
       // We'll refactor to redirect to the employees index after we implement it
@@ -31,6 +37,6 @@ async function create(req, res) {
     } catch (err) {
       // Typically some sort of validation error
       console.log(err);
-      res.render('employees/new', { errorMsg: err.message });
+      res.render('employees/new', { title:'Add Employee', errorMsg: err.message });
     }
   }
