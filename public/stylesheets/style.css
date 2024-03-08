@@ -7,7 +7,6 @@ body {
   background-image: url("/images/window.jpeg");
   background-size: cover;
   width: 100%;
-  
 }
 
 main{
@@ -28,9 +27,11 @@ nav{
 #navbarSupportedContent{
   margin-left: 14rem;
 }
-
+.logout{
+  margin-left: 33rem;
+}
 .login{
-  margin-left: 30rem;
+  margin-left: 60rem;
 }
 .table{
   width: 50%;
@@ -148,6 +149,7 @@ background-color: #90ab7d;
   width: 50%;
   margin:auto;
   height: 25vh;
+  border-radius: 20px;
 }
 .carousel-caption{
   background-color: none;
